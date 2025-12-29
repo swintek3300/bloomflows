@@ -11,6 +11,17 @@
       color: #333;
     }
 
+    /* Blur effect */
+    body.blur {
+      overflow: hidden;
+    }
+
+    body.blur .content {
+      filter: blur(5px);
+      pointer-events: none;
+      user-select: none;
+    }
+
     header {
       background-color: #f48fb1;
       color: white;
@@ -71,10 +82,56 @@
       text-align: center;
       padding: 15px;
     }
+
+    /* Dark overlay */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      display: none;
+      z-index: 999;
+    }
+
+    /* Cookie Popup */
+    .cookie-popup {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      z-index: 1000;
+      max-width: 90%;
+    }
+
+    .cookie-popup button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .accept {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .reject {
+      background-color: #f44336;
+      color: white;
+    }
   </style>
 </head>
 <body>
 
+<div class="content">
   <header>
     <h1>Bloom Flowers</h1>
     <p>Fresh • Beautiful • Handmade</p>
@@ -115,6 +172,41 @@
   <footer>
     <p>© 2025 Bloom Flowers | Made with 🌸</p>
   </footer>
+</div>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Cookie Popup -->
+<div class="cookie-popup" id="cookiePopup">
+  <span>This website uses cookies to improve your experience.</span>
+  <div>
+    <button class="accept" onclick="handleCookies('accepted')">Accept</button>
+    <button class="reject" onclick="handleCookies('rejected')">Reject</button>
+  </div>
+</div>
+
+<script>
+  window.onload = function () {
+    if (!localStorage.getItem("cookieChoice")) {
+      document.getElementById("cookiePopup").style.display = "flex";
+      document.getElementById("overlay").style.display = "block";
+      document.body.classList.add("blur");
+    }
+  };
+
+  function handleCookies(choice) {
+    localStorage.setItem("cookieChoice", choice);
+    document.getElementById("cookiePopup").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+    document.body.classList.remove("blur");
+
+    // Redirect after 3 seconds
+    setTimeout(function () {
+      window.location.href = "https://www.google.com";
+    }, 3000);
+  }
+</script>
 
 </body>
 </html>
