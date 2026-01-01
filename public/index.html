@@ -1,212 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Bloom Flowers</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #fffafc;
-      color: #333;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom & Petal - Fresh Flowers Delivered</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Blur effect */
-    body.blur {
-      overflow: hidden;
-    }
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+        }
 
-    body.blur .content {
-      filter: blur(5px);
-      pointer-events: none;
-      user-select: none;
-    }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-    header {
-      background-color: #f48fb1;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    nav {
-      background-color: #f8bbd0;
-      padding: 10px;
-      text-align: center;
-    }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
 
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-    }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
 
-    .hero {
-      padding: 50px;
-      text-align: center;
-      background-image: linear-gradient(#fff0f5, #ffffff);
-    }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
 
-    .hero h1 {
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
 
-    .flowers {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 40px;
-      flex-wrap: wrap;
-    }
+        .hero {
+            background: linear-gradient(rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)), url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=1200') center/cover;
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem;
+        }
 
-    .card {
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      width: 200px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
 
-    .card img {
-      width: 100%;
-      border-radius: 10px;
-    }
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
 
-    footer {
-      background-color: #f48fb1;
-      color: white;
-      text-align: center;
-      padding: 15px;
-    }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
 
-    /* Dark overlay */
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.4);
-      display: none;
-      z-index: 999;
-    }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
 
-    /* Cookie Popup */
-    .cookie-popup {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #333;
-      color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      display: none;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      z-index: 1000;
-      max-width: 90%;
-    }
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
 
-    .cookie-popup button {
-      padding: 8px 15px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+        .flowers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
 
-    .accept {
-      background-color: #4caf50;
-      color: white;
-    }
+        .flower-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
 
-    .reject {
-      background-color: #f44336;
-      color: white;
-    }
-  </style>
+        .flower-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .flower-img {
+            width: 100%;
+            height: 200px;
+            background: #f0e6ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .flower-info {
+            padding: 1.5rem;
+        }
+
+        .flower-info h3 {
+            margin-bottom: 0.5rem;
+            color: #667eea;
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-links {
+            margin: 1rem 0;
+        }
+
+        .footer-links a {
+            color: #667eea;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+
+        .legal-content {
+            text-align: left;
+        }
+
+        .legal-content h2 {
+            color: #667eea;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .legal-content h3 {
+            color: #764ba2;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        .legal-content p {
+            margin-bottom: 1rem;
+        }
+
+        .legal-content ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="logo">🌸 Bloom & Petal</div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('privacy')">Privacy Policy</a></li>
+                <li><a href="#" onclick="showPage('disclaimer')">Disclaimer</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<div class="content">
-  <header>
-    <h1>Bloom Flowers</h1>
-    <p>Fresh • Beautiful • Handmade</p>
-  </header>
+    <div id="home" class="page-section active">
+        <section class="hero">
+            <h1>Fresh Flowers, Delivered Daily</h1>
+            <p>Brighten someone's day with our beautiful floral arrangements</p>
+            <a href="#" class="btn">Shop Now</a>
+        </section>
 
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Flowers</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-  </nav>
+        <section class="content">
+            <h2 style="text-align: center; color: #667eea; margin-bottom: 1rem;">Our Featured Flowers</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Handpicked with love, delivered with care</p>
+            
+            <div class="flowers-grid">
+                <div class="flower-card">
+                    <div class="flower-img">🌹</div>
+                    <div class="flower-info">
+                        <h3>Romantic Roses</h3>
+                        <p>Classic red roses perfect for expressing love and admiration.</p>
+                        <p><strong>$49.99</strong></p>
+                    </div>
+                </div>
 
-  <section class="hero">
-    <h1>Flowers for Every Occasion</h1>
-    <p>Bring joy with our fresh flower collections</p>
-  </section>
+                <div class="flower-card">
+                    <div class="flower-img">🌻</div>
+                    <div class="flower-info">
+                        <h3>Sunny Sunflowers</h3>
+                        <p>Bright and cheerful sunflowers to bring joy to any space.</p>
+                        <p><strong>$39.99</strong></p>
+                    </div>
+                </div>
 
-  <section class="flowers">
-    <div class="card">
-      <img src="https://via.placeholder.com/200x150?text=Roses" alt="Roses">
-      <h3>Roses</h3>
-      <p>Classic & romantic</p>
+                <div class="flower-card">
+                    <div class="flower-img">🌷</div>
+                    <div class="flower-info">
+                        <h3>Elegant Tulips</h3>
+                        <p>Sophisticated tulips in various colors for any occasion.</p>
+                        <p><strong>$44.99</strong></p>
+                    </div>
+                </div>
+
+                <div class="flower-card">
+                    <div class="flower-img">🌺</div>
+                    <div class="flower-info">
+                        <h3>Tropical Mix</h3>
+                        <p>Exotic tropical flowers for a unique and vibrant display.</p>
+                        <p><strong>$59.99</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <div class="card">
-      <img src="https://via.placeholder.com/200x150?text=Tulips" alt="Tulips">
-      <h3>Tulips</h3>
-      <p>Bright & cheerful</p>
+    <div id="privacy" class="page-section">
+        <section class="content legal-content">
+            <h1 style="color: #667eea;">Privacy Policy</h1>
+            <p><em>Last Updated: January 1, 2026</em></p>
+
+            <h2>1. Introduction</h2>
+            <p>Welcome to Bloom & Petal. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you about how we handle your personal data when you visit our website and tell you about your privacy rights.</p>
+
+            <h2>2. Information We Collect</h2>
+            <p>We may collect, use, store and transfer different kinds of personal data about you which we have grouped together as follows:</p>
+            <ul>
+                <li><strong>Identity Data:</strong> includes first name, last name, username or similar identifier</li>
+                <li><strong>Contact Data:</strong> includes billing address, delivery address, email address and telephone numbers</li>
+                <li><strong>Financial Data:</strong> includes bank account and payment card details</li>
+                <li><strong>Transaction Data:</strong> includes details about payments to and from you and other details of products and services you have purchased from us</li>
+                <li><strong>Technical Data:</strong> includes internet protocol (IP) address, browser type and version, time zone setting and location</li>
+            </ul>
+
+            <h2>3. How We Use Your Information</h2>
+            <p>We will only use your personal data when the law allows us to. Most commonly, we will use your personal data in the following circumstances:</p>
+            <ul>
+                <li>To process and deliver your flower orders</li>
+                <li>To manage payments, fees and charges</li>
+                <li>To communicate with you about your orders</li>
+                <li>To provide customer support</li>
+                <li>To send you marketing communications (with your consent)</li>
+            </ul>
+
+            <h2>4. Data Security</h2>
+            <p>We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorized way, altered or disclosed. We limit access to your personal data to those employees, agents, contractors and other third parties who have a business need to know.</p>
+
+            <h2>5. Your Legal Rights</h2>
+            <p>Under certain circumstances, you have rights under data protection laws in relation to your personal data, including the right to:</p>
+            <ul>
+                <li>Request access to your personal data</li>
+                <li>Request correction of your personal data</li>
+                <li>Request erasure of your personal data</li>
+                <li>Object to processing of your personal data</li>
+                <li>Request restriction of processing your personal data</li>
+                <li>Request transfer of your personal data</li>
+                <li>Right to withdraw consent</li>
+            </ul>
+
+            <h2>6. Cookies</h2>
+            <p>Our website uses cookies to distinguish you from other users of our website. This helps us to provide you with a good experience when you browse our website and also allows us to improve our site.</p>
+
+            <h2>7. Contact Us</h2>
+            <p>If you have any questions about this privacy policy or our privacy practices, please contact us at:</p>
+            <p>Email: privacy@bloomandpetal.com<br>
+            Phone: (555) 123-4567</p>
+        </section>
     </div>
 
-    <div class="card">
-      <img src="https://via.placeholder.com/200x150?text=Sunflowers" alt="Sunflowers">
-      <h3>Sunflowers</h3>
-      <p>Warm & happy</p>
+    <div id="disclaimer" class="page-section">
+        <section class="content legal-content">
+            <h1 style="color: #667eea;">Disclaimer</h1>
+            <p><em>Last Updated: January 1, 2026</em></p>
+
+            <h2>1. General Information</h2>
+            <p>The information provided by Bloom & Petal on this website is for general informational purposes only. All information on the site is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability or completeness of any information on the site.</p>
+
+            <h2>2. Product Availability and Variations</h2>
+            <p>While we strive to maintain accurate product information, there may be occasions when:</p>
+            <ul>
+                <li>Flowers shown in images may vary slightly from actual products due to seasonal availability</li>
+                <li>Colors, sizes, and varieties may differ based on natural variations in flowers</li>
+                <li>Certain flowers or arrangements may be temporarily unavailable</li>
+                <li>We reserve the right to substitute flowers of equal or greater value while maintaining the overall design and color scheme</li>
+            </ul>
+
+            <h2>3. Delivery Disclaimer</h2>
+            <p>We make every effort to deliver flowers on time, however:</p>
+            <ul>
+                <li>Delivery times are estimates and not guaranteed</li>
+                <li>We are not responsible for delays caused by weather, natural disasters, or other events beyond our control</li>
+                <li>Recipient availability is the responsibility of the customer</li>
+                <li>Safe place deliveries are made at the customer's risk</li>
+            </ul>
+
+            <h2>4. Flower Care and Longevity</h2>
+            <p>The lifespan of fresh flowers varies based on many factors including variety, care, and environmental conditions. We cannot guarantee how long flowers will last once delivered, as this depends on factors outside our control.</p>
+
+            <h2>5. Pricing</h2>
+            <p>All prices are subject to change without notice. While we strive to provide accurate pricing information, errors may occur. In the event of a pricing error, we reserve the right to cancel or refuse any orders placed for products listed at the incorrect price.</p>
+
+            <h2>6. External Links</h2>
+            <p>This website may contain links to external websites that are not provided or maintained by us. We do not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites.</p>
+
+            <h2>7. Professional Advice Disclaimer</h2>
+            <p>The site cannot and does not contain professional floral design or botanical advice. The floral information is provided for general informational and educational purposes only and is not a substitute for professional advice from qualified florists or botanists.</p>
+
+            <h2>8. Limitation of Liability</h2>
+            <p>In no event shall Bloom & Petal, nor any of its officers, directors and employees, be liable to you for anything arising out of or in any way connected with your use of this website, whether such liability is under contract, tort or otherwise.</p>
+
+            <h2>9. Allergies and Sensitivities</h2>
+            <p>Some individuals may have allergies or sensitivities to certain flowers, plants, or pollens. We are not responsible for any allergic reactions that may occur. Please verify with recipients before sending flowers if you are aware of any allergies.</p>
+
+            <h2>10. Changes to This Disclaimer</h2>
+            <p>We reserve the right to modify this disclaimer at any time. Changes will be effective immediately upon posting to the website. Your continued use of the website following any changes constitutes acceptance of those changes.</p>
+
+            <h2>Contact Information</h2>
+            <p>If you have any questions about this disclaimer, please contact us at:</p>
+            <p>Email: info@bloomandpetal.com<br>
+            Phone: (555) 123-4567</p>
+        </section>
     </div>
-  </section>
 
-  <footer>
-    <p>© 2025 Bloom Flowers | Made with 🌸</p>
-  </footer>
-</div>
+    <footer>
+        <p>&copy; 2026 Bloom & Petal. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#" onclick="showPage('privacy')">Privacy Policy</a> | 
+            <a href="#" onclick="showPage('disclaimer')">Disclaimer</a>
+        </div>
+        <p>Email: info@bloomandpetal.com | Phone: (555) 123-4567</p>
+    </footer>
 
-<!-- Overlay -->
-<div class="overlay" id="overlay"></div>
-
-<!-- Cookie Popup -->
-<div class="cookie-popup" id="cookiePopup">
-  <span>This website uses cookies to improve your experience.</span>
-  <div>
-    <button class="accept" onclick="handleCookies('accepted')">Accept</button>
-    <button class="reject" onclick="handleCookies('rejected')">Reject</button>
-  </div>
-</div>
-
-<script>
-  window.onload = function () {
-    if (!localStorage.getItem("cookieChoice")) {
-      document.getElementById("cookiePopup").style.display = "flex";
-      document.getElementById("overlay").style.display = "block";
-      document.body.classList.add("blur");
-    }
-  };
-
-  function handleCookies(choice) {
-    localStorage.setItem("cookieChoice", choice);
-    document.getElementById("cookiePopup").style.display = "none";
-    document.getElementById("overlay").style.display = "none";
-    document.body.classList.remove("blur");
-
-    // Redirect after 3 seconds
-    setTimeout(function () {
-      window.location.href = "https://www.bing.com";
-    }, 3000);
-  }
-</script>
-
+    <script>
+        function showPage(pageId) {
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    </script>
 </body>
 </html>
