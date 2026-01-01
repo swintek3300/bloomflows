@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bloom & Petal - Fresh Flowers Delivered</title>
+    <title>Tony Flowers Inc - Premium Floral Arrangements & Delivery</title>
     <style>
         * {
             margin: 0;
@@ -12,16 +12,19 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
         }
 
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2c5f2d 0%, #97bc62 100%);
             color: white;
-            padding: 2rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
         nav {
@@ -31,23 +34,29 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .nav-links {
             display: flex;
             gap: 2rem;
             list-style: none;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
             color: white;
             text-decoration: none;
             transition: opacity 0.3s;
+            font-weight: 500;
         }
 
         .nav-links a:hover {
@@ -55,15 +64,17 @@
         }
 
         .hero {
-            background: linear-gradient(rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)), url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=1200') center/cover;
+            background: linear-gradient(rgba(44, 95, 45, 0.7), rgba(44, 95, 45, 0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%2397bc62" width="1200" height="600"/></svg>');
             color: white;
             text-align: center;
-            padding: 8rem 2rem;
+            padding: 6rem 2rem;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero p {
@@ -71,18 +82,27 @@
             margin-bottom: 2rem;
         }
 
+        .hero-tagline {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
         .btn {
             display: inline-block;
-            padding: 1rem 2rem;
-            background: white;
-            color: #667eea;
+            padding: 1rem 2.5rem;
+            background: #97bc62;
+            color: white;
             text-decoration: none;
             border-radius: 30px;
             font-weight: bold;
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            border: 2px solid white;
         }
 
         .btn:hover {
+            background: white;
+            color: #2c5f2d;
             transform: translateY(-2px);
         }
 
@@ -92,42 +112,84 @@
             padding: 4rem 2rem;
         }
 
-        .flowers-grid {
+        .section-title {
+            text-align: center;
+            color: #2c5f2d;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
-        .flower-card {
+        .product-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
         }
 
-        .flower-card:hover {
-            transform: translateY(-5px);
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
         }
 
-        .flower-img {
+        .product-img {
             width: 100%;
-            height: 200px;
-            background: #f0e6ff;
+            height: 220px;
+            background: linear-gradient(135deg, #97bc62 0%, #2c5f2d 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: 5rem;
         }
 
-        .flower-info {
+        .product-info {
             padding: 1.5rem;
         }
 
-        .flower-info h3 {
+        .product-info h3 {
             margin-bottom: 0.5rem;
-            color: #667eea;
+            color: #2c5f2d;
+            font-size: 1.3rem;
+        }
+
+        .product-info p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            color: #2c5f2d;
+            font-weight: bold;
+        }
+
+        .order-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.7rem 1.5rem;
+            background: #2c5f2d;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .order-btn:hover {
+            background: #97bc62;
         }
 
         .page-section {
@@ -138,22 +200,173 @@
             display: block;
         }
 
-        footer {
-            background: #2d3748;
-            color: white;
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
             text-align: center;
             padding: 2rem;
+            background: #f9f9f9;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            background: #2c5f2d;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .service-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .about-text h3 {
+            color: #2c5f2d;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #97bc62 0%, #2c5f2d 100%);
+            height: 400px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c5f2d;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2c5f2d;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #2c5f2d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #97bc62;
+        }
+
+        .info-box {
+            background: #f0f7f0;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            border-left: 5px solid #2c5f2d;
+        }
+
+        .info-box h3 {
+            color: #2c5f2d;
+            margin-bottom: 1rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-item span {
+            font-size: 1.5rem;
+        }
+
+        footer {
+            background: #1a3a1b;
+            color: white;
+            padding: 3rem 2rem 1rem 2rem;
             margin-top: 4rem;
         }
 
-        .footer-links {
-            margin: 1rem 0;
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
 
-        .footer-links a {
-            color: #667eea;
-            margin: 0 1rem;
+        .footer-section h3 {
+            color: #97bc62;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: white;
             text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #97bc62;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #97bc62;
         }
 
         .legal-content {
@@ -161,213 +374,397 @@
         }
 
         .legal-content h2 {
-            color: #667eea;
+            color: #2c5f2d;
             margin: 2rem 0 1rem 0;
         }
 
         .legal-content h3 {
-            color: #764ba2;
+            color: #97bc62;
             margin: 1.5rem 0 0.5rem 0;
-        }
-
-        .legal-content p {
-            margin-bottom: 1rem;
         }
 
         .legal-content ul {
             margin-left: 2rem;
             margin-bottom: 1rem;
         }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">🌸 Bloom & Petal</div>
+            <div class="logo">🌺 Tony Flowers Inc</div>
             <ul class="nav-links">
                 <li><a href="#" onclick="showPage('home')">Home</a></li>
-                <li><a href="#" onclick="showPage('privacy')">Privacy Policy</a></li>
+                <li><a href="#" onclick="showPage('about')">About Us</a></li>
+                <li><a href="#" onclick="showPage('products')">Products</a></li>
+                <li><a href="#" onclick="showPage('services')">Services</a></li>
+                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                <li><a href="#" onclick="showPage('privacy')">Privacy</a></li>
                 <li><a href="#" onclick="showPage('disclaimer')">Disclaimer</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- HOME PAGE -->
     <div id="home" class="page-section active">
         <section class="hero">
-            <h1>Fresh Flowers, Delivered Daily</h1>
-            <p>Brighten someone's day with our beautiful floral arrangements</p>
-            <a href="#" class="btn">Shop Now</a>
+            <h1>🌺 Tony Flowers Inc 🌺</h1>
+            <p class="hero-tagline">"Where Every Bloom Tells a Story"</p>
+            <p>Premium Floral Arrangements for Every Occasion</p>
+            <a href="#" onclick="showPage('products')" class="btn">Browse Our Collection</a>
         </section>
 
         <section class="content">
-            <h2 style="text-align: center; color: #667eea; margin-bottom: 1rem;">Our Featured Flowers</h2>
-            <p style="text-align: center; margin-bottom: 2rem;">Handpicked with love, delivered with care</p>
+            <h2 class="section-title">Welcome to Tony Flowers Inc</h2>
+            <p class="section-subtitle">Your trusted florist since 1985, serving the community with passion and dedication</p>
             
-            <div class="flowers-grid">
-                <div class="flower-card">
-                    <div class="flower-img">🌹</div>
-                    <div class="flower-info">
-                        <h3>Romantic Roses</h3>
-                        <p>Classic red roses perfect for expressing love and admiration.</p>
-                        <p><strong>$49.99</strong></p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🚚</div>
+                    <h3>Same-Day Delivery</h3>
+                    <p>Order before 2 PM for same-day delivery in local areas</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Custom Designs</h3>
+                    <p>Personalized arrangements tailored to your preferences</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💐</div>
+                    <h3>Fresh Quality</h3>
+                    <p>100% fresh flowers sourced from certified growers</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💝</div>
+                    <h3>Special Occasions</h3>
+                    <p>Perfect arrangements for weddings, birthdays, and more</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3>Why Choose Tony Flowers Inc?</h3>
+                <p>With over 35 years of experience in the floral industry, Tony Flowers Inc has become a household name for quality, creativity, and exceptional customer service. Our master florists handcraft each arrangement with attention to detail and artistic flair, ensuring your flowers make a lasting impression.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about" class="page-section">
+        <section class="content">
+            <h1 class="section-title">About Tony Flowers Inc</h1>
+            <p class="section-subtitle">Our Story, Mission, and Values</p>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Our Story</h2>
+                    <p>Founded in 1985 by master florist Tony Martinez, Tony Flowers Inc began as a small flower shop with a big dream: to bring joy and beauty into people's lives through the art of floral design. What started as a one-person operation has grown into a thriving business serving thousands of customers annually.</p>
+
+                    <h3>Our Mission</h3>
+                    <p>To provide the finest quality flowers and create stunning arrangements that exceed our customers' expectations. We believe every bouquet should tell a story and convey emotions that words cannot express.</p>
+
+                    <h3>Our Values</h3>
+                    <ul>
+                        <li><strong>Quality:</strong> We source only the freshest flowers from trusted growers</li>
+                        <li><strong>Creativity:</strong> Each arrangement is a unique work of art</li>
+                        <li><strong>Service:</strong> Customer satisfaction is our top priority</li>
+                        <li><strong>Sustainability:</strong> We practice eco-friendly methods in all operations</li>
+                        <li><strong>Community:</strong> We proudly support local growers and charities</li>
+                    </ul>
+
+                    <h3>Meet Our Team</h3>
+                    <p>Our team of 15 skilled florists brings decades of combined experience. Led by Tony Martinez Jr., we continue the family tradition of excellence in floral design. Our designers are certified by the American Institute of Floral Designers (AIFD) and regularly attend workshops to stay current with the latest trends.</p>
+                </div>
+                <div class="about-image">
+                    🏪
+                </div>
+            </div>
+
+            <div class="info-box" style="margin-top: 3rem;">
+                <h3>Our Facility</h3>
+                <p>Located at 1234 Garden Boulevard, our 5,000 square foot facility includes a state-of-the-art cooler system maintaining optimal temperature and humidity for our flowers. We also feature a beautiful showroom where customers can view sample arrangements and consult with our design team.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- PRODUCTS PAGE -->
+    <div id="products" class="page-section">
+        <section class="content">
+            <h1 class="section-title">Our Products</h1>
+            <p class="section-subtitle">Handcrafted arrangements for every occasion</p>
+
+            <h2 style="color: #2c5f2d; margin-top: 2rem;">Featured Arrangements</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img">🌹</div>
+                    <div class="product-info">
+                        <h3>Classic Rose Bouquet</h3>
+                        <p>Elegant arrangement of 24 premium long-stem roses in your choice of color. Perfect for anniversaries and romantic occasions.</p>
+                        <div class="price">$79.99</div>
+                        <a href="#" onclick="showPage('contact')" class="order-btn">Order Now</a>
                     </div>
                 </div>
 
-                <div class="flower-card">
-                    <div class="flower-img">🌻</div>
-                    <div class="flower-info">
-                        <h3>Sunny Sunflowers</h3>
-                        <p>Bright and cheerful sunflowers to bring joy to any space.</p>
-                        <p><strong>$39.99</strong></p>
+                <div class="product-card">
+                    <div class="product-img">🌻</div>
+                    <div class="product-info">
+                        <h3>Sunny Delight</h3>
+                        <p>Cheerful mix of sunflowers, daisies, and seasonal blooms in a rustic basket. Brings warmth to any space.</p>
+                        <div class="price">$64.99</div>
+                        <a href="#" onclick="showPage('contact')" class="order-btn">Order Now</a>
                     </div>
                 </div>
 
-                <div class="flower-card">
-                    <div class="flower-img">🌷</div>
-                    <div class="flower-info">
-                        <h3>Elegant Tulips</h3>
-                        <p>Sophisticated tulips in various colors for any occasion.</p>
-                        <p><strong>$44.99</strong></p>
+                <div class="product-card">
+                    <div class="product-img">🌷</div>
+                    <div class="product-info">
+                        <h3>Tulip Garden</h3>
+                        <p>Sophisticated arrangement of 30 premium Dutch tulips in assorted colors. Spring's finest offering.</p>
+                        <div class="price">$69.99</div>
+                        <a href="#" onclick="showPage('contact')" class="order-btn">Order Now</a>
                     </div>
                 </div>
 
-                <div class="flower-card">
-                    <div class="flower-img">🌺</div>
-                    <div class="flower-info">
-                        <h3>Tropical Mix</h3>
-                        <p>Exotic tropical flowers for a unique and vibrant display.</p>
-                        <p><strong>$59.99</strong></p>
+                <div class="product-card">
+                    <div class="product-img">💐</div>
+                    <div class="product-info">
+                        <h3>Grand Celebration</h3>
+                        <p>Luxurious mixed arrangement featuring roses, lilies, orchids, and premium greenery in an elegant vase.</p>
+                        <div class="price">$129.99</div>
+                        <a href="#" onclick="showPage('contact')" class="order-btn">Order Now</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">🌺</div>
+                    <div class="product-info">
+                        <h3>Tropical Paradise</h3>
+                        <p>Exotic arrangement of birds of paradise, anthuriums, and tropical foliage. Makes a bold statement.</p>
+                        <div class="price">$89.99</div>
+                        <a href="#" onclick="showPage('contact')" class="order-btn">Order Now</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">🎋</div>
+                    <div class="product-info">
+                        <h3>Zen Garden</h3>
+                        <p>Minimalist arrangement with orchids, bamboo, and river stones. Perfect for modern spaces.</p>
+                        <div class="price">$74.99</div>
+                        <a href="#" onclick="showPage('contact')" class="order-btn">Order Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <h2 style="color: #2c5f2d; margin-top: 3rem;">Specialty Collections</h2>
+            <div class="info-box">
+                <h3>🎊 Wedding Collections</h3>
+                <p>Complete wedding floral packages including bridal bouquets, bridesmaid arrangements, boutonnieres, centerpieces, and ceremony decorations. Prices starting at $1,200. Consultations available.</p>
+            </div>
+
+            <div class="info-box">
+                <h3>🏢 Corporate Services</h3>
+                <p>Weekly floral arrangements for offices, lobby displays, and corporate events. Subscription plans available with discounted rates for ongoing service.</p>
+            </div>
+
+            <div class="info-box">
+                <h3>⚰️ Sympathy Arrangements</h3>
+                <p>Dignified tributes including standing sprays, casket covers, and sympathy baskets. We offer same-day delivery to funeral homes and can work with any budget ($45-$500+).</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- SERVICES PAGE -->
+    <div id="services" class="page-section">
+        <section class="content">
+            <h1 class="section-title">Our Services</h1>
+            <p class="section-subtitle">Comprehensive floral solutions for all your needs</p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💒</div>
+                    <h3>Wedding Services</h3>
+                    <p>Full-service wedding florals from consultation to setup</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎉</div>
+                    <h3>Event Design</h3>
+                    <p>Corporate events, parties, and special celebrations</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚚</div>
+                    <h3>Delivery Service</h3>
+                    <p>Local and nationwide delivery options available</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📅</div>
+                    <h3>Subscription Plans</h3>
+                    <p>Weekly or monthly fresh flower subscriptions</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Custom Design</h3>
+                    <p>Work with our designers to create your vision</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3>Floral Workshops</h3>
+                    <p>Learn floral design in our hands-on classes</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <h2 style="color: #2c5f2d; margin-bottom: 1rem;">Detailed Service Information</h2>
+                
+                <div class="info-box">
+                    <h3>Wedding & Event Services</h3>
+                    <p>Our wedding team provides comprehensive consultation services to bring your floral vision to life. Services include:</p>
+                    <ul>
+                        <li>Initial consultation and venue visit</li>
+                        <li>Custom design proposals with photos</li>
+                        <li>Bridal bouquets and bridesmaid flowers</li>
+                        <li>Ceremony arrangements and aisle decorations</li>
+                        <li>Reception centerpieces and table arrangements</li>
+                        <li>Setup and breakdown services</li>
+                        <li>Rental items (vases, candelabras, arches)</li>
+                    </ul>
+                    <p><strong>Booking:</strong> We recommend booking 6-12 months in advance for weddings. Contact us to schedule your consultation.</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>Delivery Information</h3>
+                    <p><strong>Local Delivery:</strong> $15 flat rate within 10 miles. Same-day delivery available for orders placed before 2 PM.</p>
+                    <p><strong>Extended Area:</strong> $25-$50 depending on distance (up to 50 miles).</p>
+                    <p><strong>Nationwide:</strong> We partner with FTD and Teleflora for nationwide delivery to ensure your flowers arrive fresh anywhere in the country.</p>
+                    <p><strong>Delivery Times:</strong> Standard delivery window is 9 AM - 6 PM. Specific time requests accommodated when possible for an additional $20 fee.</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>Subscription Services</h3>
+                    <p>Keep your home or office fresh with our subscription plans:</p>
+                    <ul>
+                        <li><strong>Weekly Plan:</strong> $60/week - Fresh seasonal arrangement delivered every Monday</li>
+                        <li><strong>Bi-Weekly Plan:</strong> $70/delivery - Larger arrangement every two weeks</li>
+                        <li><strong>Monthly Plan:</strong> $85/month - Premium arrangement delivered monthly</li>
+                    </ul>
+                    <p>All subscriptions include free delivery and 10% discount on additional orders. Cancel anytime with 2 weeks notice.</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>Workshops & Classes</h3>
+                    <p>Join us for fun and educational floral design workshops:</p>
+                    <ul>
+                        <li><strong>Beginner Bouquet Class:</strong> $65 - Learn basic design principles and create your own arrangement</li>
+                        <li><strong>Centerpiece Workshop:</strong> $85 - Design elegant centerpieces for your next event</li>
+                        <li><strong>Wedding DIY Class:</strong> $150 - Create your own bridal bouquet and boutonnieres</li>
+                        <li><strong>Private Classes:</strong> Available for groups of 6+ - Perfect for parties and team building</li>
+                    </ul>
+                    <p>All materials included. Classes held monthly - check our website or call for schedule.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page-section">
+        <section class="content">
+            <h1 class="section-title">Contact Us</h1>
+            <p class="section-subtitle">We'd love to hear from you!</p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem;">
+                <div>
+                    <div class="info-box">
+                        <h3>📍 Visit Our Store</h3>
+                        <p><strong>Tony Flowers Inc</strong><br>
+                        1234 Garden Boulevard<br>
+                        Springfield, IL 62701<br>
+                        United States</p>
+                        
+                        <h3 style="margin-top: 1.5rem;">📞 Contact Information</h3>
+                        <div class="info-item">
+                            <span>☎️</span>
+                            <div>
+                                <strong>Phone:</strong> (555) 123-4567<br>
+                                <strong>Toll Free:</strong> 1-800-FLOWERS
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <span>📧</span>
+                            <div>
+                                <strong>Email:</strong> info@tonyflowersinc.com<br>
+                                <strong>Orders:</strong> orders@tonyflowersinc.com
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <span>🌐</span>
+                            <div>
+                                <strong>Website:</strong> www.tonyflowersinc.com
+                            </div>
+                        </div>
+
+                        <h3 style="margin-top: 1.5rem;">🕐 Business Hours</h3>
+                        <p>
+                        <strong>Monday - Friday:</strong> 8:00 AM - 7:00 PM<br>
+                        <strong>Saturday:</strong> 9:00 AM - 6:00 PM<br>
+                        <strong>Sunday:</strong> 10:00 AM - 4:00 PM<br>
+                        <em>Extended hours during holidays</em>
+                        </p>
+
+                        <h3 style="margin-top: 1.5rem;">💬 Follow Us</h3>
+                        <p>Facebook | Instagram | Pinterest | Twitter<br>
+                        @TonyFlowersInc</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="contact-form">
+                        <h3 style="color: #2c5f2d; margin-bottom: 1rem;">Send Us a Message</h3>
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" onclick="handleSubmit()">Send Message</button>
                     </div>
                 </div>
             </div>
         </section>
     </div>
 
+    <!-- PRIVACY POLICY PAGE -->
     <div id="privacy" class="page-section">
         <section class="content legal-content">
-            <h1 style="color: #667eea;">Privacy Policy</h1>
+            <h1 style="color: #2c5f2d;">Privacy Policy</h1>
+            <p><em>Effective Date: January 1, 2026</em></p>
             <p><em>Last Updated: January 1, 2026</em></p>
 
             <h2>1. Introduction</h2>
-            <p>Welcome to Bloom & Petal. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you about how we handle your personal data when you visit our website and tell you about your privacy rights.</p>
-
-            <h2>2. Information We Collect</h2>
-            <p>We may collect, use, store and transfer different kinds of personal data about you which we have grouped together as follows:</p>
-            <ul>
-                <li><strong>Identity Data:</strong> includes first name, last name, username or similar identifier</li>
-                <li><strong>Contact Data:</strong> includes billing address, delivery address, email address and telephone numbers</li>
-                <li><strong>Financial Data:</strong> includes bank account and payment card details</li>
-                <li><strong>Transaction Data:</strong> includes details about payments to and from you and other details of products and services you have purchased from us</li>
-                <li><strong>Technical Data:</strong> includes internet protocol (IP) address, browser type and version, time zone setting and location</li>
-            </ul>
-
-            <h2>3. How We Use Your Information</h2>
-            <p>We will only use your personal data when the law allows us to. Most commonly, we will use your personal data in the following circumstances:</p>
-            <ul>
-                <li>To process and deliver your flower orders</li>
-                <li>To manage payments, fees and charges</li>
-                <li>To communicate with you about your orders</li>
-                <li>To provide customer support</li>
-                <li>To send you marketing communications (with your consent)</li>
-            </ul>
-
-            <h2>4. Data Security</h2>
-            <p>We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorized way, altered or disclosed. We limit access to your personal data to those employees, agents, contractors and other third parties who have a business need to know.</p>
-
-            <h2>5. Your Legal Rights</h2>
-            <p>Under certain circumstances, you have rights under data protection laws in relation to your personal data, including the right to:</p>
-            <ul>
-                <li>Request access to your personal data</li>
-                <li>Request correction of your personal data</li>
-                <li>Request erasure of your personal data</li>
-                <li>Object to processing of your personal data</li>
-                <li>Request restriction of processing your personal data</li>
-                <li>Request transfer of your personal data</li>
-                <li>Right to withdraw consent</li>
-            </ul>
-
-            <h2>6. Cookies</h2>
-            <p>Our website uses cookies to distinguish you from other users of our website. This helps us to provide you with a good experience when you browse our website and also allows us to improve our site.</p>
-
-            <h2>7. Contact Us</h2>
-            <p>If you have any questions about this privacy policy or our privacy practices, please contact us at:</p>
-            <p>Email: privacy@bloomandpetal.com<br>
-            Phone: (555) 123-4567</p>
-        </section>
-    </div>
-
-    <div id="disclaimer" class="page-section">
-        <section class="content legal-content">
-            <h1 style="color: #667eea;">Disclaimer</h1>
-            <p><em>Last Updated: January 1, 2026</em></p>
-
-            <h2>1. General Information</h2>
-            <p>The information provided by Bloom & Petal on this website is for general informational purposes only. All information on the site is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability or completeness of any information on the site.</p>
-
-            <h2>2. Product Availability and Variations</h2>
-            <p>While we strive to maintain accurate product information, there may be occasions when:</p>
-            <ul>
-                <li>Flowers shown in images may vary slightly from actual products due to seasonal availability</li>
-                <li>Colors, sizes, and varieties may differ based on natural variations in flowers</li>
-                <li>Certain flowers or arrangements may be temporarily unavailable</li>
-                <li>We reserve the right to substitute flowers of equal or greater value while maintaining the overall design and color scheme</li>
-            </ul>
-
-            <h2>3. Delivery Disclaimer</h2>
-            <p>We make every effort to deliver flowers on time, however:</p>
-            <ul>
-                <li>Delivery times are estimates and not guaranteed</li>
-                <li>We are not responsible for delays caused by weather, natural disasters, or other events beyond our control</li>
-                <li>Recipient availability is the responsibility of the customer</li>
-                <li>Safe place deliveries are made at the customer's risk</li>
-            </ul>
-
-            <h2>4. Flower Care and Longevity</h2>
-            <p>The lifespan of fresh flowers varies based on many factors including variety, care, and environmental conditions. We cannot guarantee how long flowers will last once delivered, as this depends on factors outside our control.</p>
-
-            <h2>5. Pricing</h2>
-            <p>All prices are subject to change without notice. While we strive to provide accurate pricing information, errors may occur. In the event of a pricing error, we reserve the right to cancel or refuse any orders placed for products listed at the incorrect price.</p>
-
-            <h2>6. External Links</h2>
-            <p>This website may contain links to external websites that are not provided or maintained by us. We do not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites.</p>
-
-            <h2>7. Professional Advice Disclaimer</h2>
-            <p>The site cannot and does not contain professional floral design or botanical advice. The floral information is provided for general informational and educational purposes only and is not a substitute for professional advice from qualified florists or botanists.</p>
-
-            <h2>8. Limitation of Liability</h2>
-            <p>In no event shall Bloom & Petal, nor any of its officers, directors and employees, be liable to you for anything arising out of or in any way connected with your use of this website, whether such liability is under contract, tort or otherwise.</p>
-
-            <h2>9. Allergies and Sensitivities</h2>
-            <p>Some individuals may have allergies or sensitivities to certain flowers, plants, or pollens. We are not responsible for any allergic reactions that may occur. Please verify with recipients before sending flowers if you are aware of any allergies.</p>
-
-            <h2>10. Changes to This Disclaimer</h2>
-            <p>We reserve the right to modify this disclaimer at any time. Changes will be effective immediately upon posting to the website. Your continued use of the website following any changes constitutes acceptance of those changes.</p>
-
-            <h2>Contact Information</h2>
-            <p>If you have any questions about this disclaimer, please contact us at:</p>
-            <p>Email: info@bloomandpetal.com<br>
-            Phone: (555) 123-4567</p>
-        </section>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Bloom & Petal. All rights reserved.</p>
-        <div class="footer-links">
-            <a href="#" onclick="showPage('privacy')">Privacy Policy</a> | 
-            <a href="#" onclick="showPage('disclaimer')">Disclaimer</a>
-        </div>
-        <p>Email: info@bloomandpetal.com | Phone: (555) 123-4567</p>
-    </footer>
-
-    <script>
-        function showPage(pageId) {
-            const sections = document.querySelectorAll('.page-section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(pageId).classList.add('active');
-            window.scrollTo(0, 0);
-        }
-    </script>
-</body>
-</html>
+            <p>Tony Flowers Inc ("we," "our," or "us") is committed to protecting
